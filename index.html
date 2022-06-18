@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To To-Do - Login</title>
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <noscript>
+        <div class="error message">
+          We're sorry but our site <strong>requires</strong> JavaScript.
+          <p>Please check your settings if js is disabled</p>
+        </div>    
+      </noscript>
+  
+  
+      <div class="container">
+          <div class="row h-100 justify-content-md-center">
+              <div class="col col-12 col-sm-8 col-lg-6 my-auto">
+                  <div class="form-container">
+                      <div class="progress_entry">
+                          <div class="logo">
+                              <img src="img/MyDiaryIcon.svg" class="mx-auto d-block">
+                          </div>
+                          <div class="text-center txt">
+                              <h2><strong>To To-Do</strong></h2>
+                          </div>
+                      </div>
+
+                      <div id="login">
+                        <button>Login with Google</button>
+                      </div>
+  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Setting up Firebase -->
+    <script type="module">
+        
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+        apiKey: "AIzaSyA0oxxtXWak689s11Z6C9F6Z6iZI_imNaU",
+        authDomain: "to-to-do-22eec.firebaseapp.com",
+        projectId: "to-to-do-22eec",
+        storageBucket: "to-to-do-22eec.appspot.com",
+        messagingSenderId: "350532709206",
+        appId: "1:350532709206:web:51c045c9bd1690468284f7"
+    };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // const database = getDatabase(app);
+        const auth = getAuth();
+        auth.languageCode = 'it';
+        console.log("Firebase initialised");
+        const provider = new GoogleAuthProvider();
+
+        login.addEventListener('click', (e) => {
+
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+
+                    // The signed-in user info.
+                    // const user = result.user;
+                    // alert(user.displayName+' has logged in!');
+
+                    window.location.replace("index1.html");
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // The email of the user's account used.
+                    const email = error.customData.email;
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // alert(errorMessage);
+                    console.log("ERROR signing in.");
+                });
+
+        });
+
+        const user = auth.currentUser;
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                const uid = user.uid;
+                // ...
+            } else {
+                // User is signed out
+            }
+        });
+      </script>
+</body>
+</html>
