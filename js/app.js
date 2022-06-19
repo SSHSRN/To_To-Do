@@ -82,34 +82,34 @@ tick = new Howl({
 });
 
 notification = new Howl({
-	src: ["assets/sounds/notification-bell.mp3"],
+	src: ["assets/sounds/bell.mp3"],
 	volume: 0.3,
 });
 
 //Background Music
 allBackgroundMusic = {
 	Campfire: new Howl({
-		src: ["assets/sounds/background_music/Campfire.mp3"],
+		src: ["assets/sounds/background_music/fire.mp3"],
 		volume: 0.1,
 		loop: true,
 	}),
 	Forest: new Howl({
-		src: ["assets/sounds/background_music/Forest.mp3"],
+		src: ["assets/sounds/background_music/forest.mp3"],
 		volume: 0.1,
 		loop: true,
 	}),
 	Ocean: new Howl({
-		src: ["assets/sounds/background_music/Ocean.mp3"],
+		src: ["assets/sounds/background_music/ocean.mp3"],
 		volume: 0.1,
 		loop: true,
 	}),
 	Rain: new Howl({
-		src: ["assets/sounds/background_music/Rain.mp3"],
+		src: ["assets/sounds/background_music/rain.mp3"],
 		volume: 0.1,
 		loop: true,
 	}),
 	"Windy Desert": new Howl({
-		src: ["assets/sounds/background_music/Windy_Desert.mp3"],
+		src: ["assets/sounds/desert.mp3"],
 		volume: 0.1,
 		loop: true,
 	}),
