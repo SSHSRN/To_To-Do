@@ -86,6 +86,11 @@ notification = new Howl({
 	volume: 0.3,
 });
 
+fart = new Howl({
+	src: ["assets/sounds/fart.mp3"],
+	volume: 2,
+});
+
 //Background Music
 allBackgroundMusic = {
 	Campfire: new Howl({
@@ -680,6 +685,7 @@ function checkedWhenclicked(item) {
 }
 
 function deleteTasks(item) {
+	fart.play();
 	item.parentElement.style.transition = "all 0.2s ease-in";
 	item.parentElement.classList.add("slide-away");
 	item.parentElement.addEventListener("transitionend", function () {
